@@ -16,15 +16,15 @@ public class NativeDictionary<T> {
         return len % size;
     }
 
-    public int seekSlot(String value) {
-        int ind = hashFun(value);
+    public int seekSlot(String key) {
+        int ind = hashFun(key);
 
         for (int i = 0; i < size; i++, ind++) {
             if (ind >= size) {
                 ind -= size;
             }
 
-            if (slots[ind] == null) {
+            if (slots[ind] == null || slots[ind].equals(key)) {
                 return ind;
             }
         }
